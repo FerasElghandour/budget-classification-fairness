@@ -1,0 +1,23 @@
+{
+  "metrics": {
+    "tp": 4,
+    "tn": 4,
+    "fp": 0,
+    "fn": 0,
+    "accuracy": 1.0,
+    "statistical_parity_difference": 0.0,
+    "disparate_impact": 1.0,
+    "equal_opportunity_difference": 0.0,
+    "average_odds_difference": 0.0
+  },
+  "weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ]
+}

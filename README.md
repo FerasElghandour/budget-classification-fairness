@@ -1,18 +1,51 @@
 # Budget Classification and Fairness Analysis
 
-**Feras Elghandour** · Technical case study
-
 Evaluate how a binary budget recommendation trades predictive accuracy against differences in outcomes across education cohorts.
 
 ## Implementation
 
 A reusable fairness core computing confusion counts, group outcome gaps, and reweighing weights with explicit undefined-rate handling.
 
-```mermaid
-flowchart LR
-    A[Validated inputs] --> B[Portable implementation]
-    B --> C[Evaluation and contract checks]
-    C --> D[Inspectable results]
+![Implementation mechanism: Binary labels and predictions by group → Group confusion counts → Selection rate and TPR and FPR → Compare gaps while preserving undefined rates → Separate frequency-based reweighting proposal](assets/mechanism.svg)
+
+## Try a small example
+
+A small offline fixture exercises the public implementation. It demonstrates the behavior shown below; it does not replace the historical dataset, benchmark or production validation.
+
+After the local setup below, run from the repository root:
+
+```sh
+python examples/quickstart.py
+```
+
+The [example source](examples/quickstart.py), [captured output](examples/expected-output.txt) and [execution record](examples/environment.json) keep this demonstration inspectable. Floating-point values may vary with library versions.
+
+Observed output from this run:
+
+```text
+{
+  "metrics": {
+    "tp": 4,
+    "tn": 4,
+    "fp": 0,
+    "fn": 0,
+    "accuracy": 1.0,
+    "statistical_parity_difference": 0.0,
+    "disparate_impact": 1.0,
+    "equal_opportunity_difference": 0.0,
+    "average_odds_difference": 0.0
+  },
+  "weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ]
+}
 ```
 
 ## Completed study
@@ -38,5 +71,3 @@ Prepare your own inputs as described in [DATA.md](DATA.md). Tests use generated 
 ## Practical relevance and limitations
 
 The target is budget at least $300, not an exact-dollar forecast. The observed fairness trade-offs apply to this synthetic dataset and group definitions. Strong remaining demographic parity gaps require further work before operational use.
-
-This edition makes the core behavior reusable and inspectable. Historical metrics and synthetic contract tests provide different kinds of evidence; neither establishes client deployment or commercial impact.
