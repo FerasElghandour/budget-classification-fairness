@@ -80,3 +80,7 @@ Prepare your own inputs as described in [DATA.md](DATA.md). Tests use generated 
 ## Practical relevance and limitations
 
 The target is budget at least $300, not an exact-dollar forecast. The observed fairness trade-offs apply to this synthetic dataset and group definitions. Strong remaining demographic parity gaps require further work before operational use.
+
+## Reuse
+
+The original contributions listed in [LICENSING.md](LICENSING.md) are available under [MIT](LICENSE). This scoped grant preserves upstream notices and separate dataset, simulator, notebook and checkpoint terms.
